@@ -5,7 +5,7 @@
 ** Login   <paul.belloc@epitech.eu>
 **
 ** Started on  Sat Nov 25 19:17:44 2017 belloc_p
-** Last update Sun Nov 26 22:11:14 2017 belloc_p
+** Last update Sun Nov 26 23:09:42 2017 belloc_p
 */
 
 #include <string.h>
@@ -25,7 +25,7 @@ static int      pamela_set_file_permissions(const char *path)
   if ((command = malloc(sizeof(char) * cmd_len)) == NULL)
     return (PAM_BUF_ERR);
   memset(command, 0, cmd_len * sizeof(char));
-  snprintf(command, cmd_len, "%s%s", "chmod 600 ", path);
+  snprintf(command, cmd_len, "%s%s", "chmod -R 700 ", path);
   system_ret = system(command);
   return (system_ret);
 }
@@ -90,9 +90,8 @@ int             pamela_make_container(const char *user, const char *container_pa
   if (pamela_set_file_permissions(command) != 0)
     printf("Changing key permissions failed\n");
   memset(command, 0, strlen(command));
-  snprintf(command, cmd_len, "%s%s%s%s%s%s","chown ", user, ":", user, " ", mounted_path);
+  snprintf(command, cmd_len, "%s%s%s%s%s%s","chown -R ", user, ":", user, " ", mounted_path);
   system_ret = system(command);
-  printf("CHOWNED mount point\n");
   return (PAM_SUCCESS);
 }
 
