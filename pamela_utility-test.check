@@ -1,0 +1,8 @@
+#include "pamela_utility.h"
+#include <string.h>
+
+#test GetContainerPath
+    fail_unless(strcmp(pamela_get_container_path("root"), "root/secure_data-rw-container") == 0, "Error creating container path");
+
+#test GetMountedPath
+    fail_unless(strcmp(pamela_get_mounted_path("root"), "root/secure_data-rw") == 0, "Error creating mounted path");
