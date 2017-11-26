@@ -17,9 +17,13 @@ The created container, the volume and the key are in the home of each user.
 * Only a super user or a sudoer can install PAMELA
 
 > make
+
 > make install
+
 > make check
+
 > make test
+
 > make clean
 
 ## UNINSTALLATION
